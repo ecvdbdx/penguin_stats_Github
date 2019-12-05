@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
+import fetchJson from "./fetchJson.js";
 import Repos from "./components/repos";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      repos: []
+      repos: [],
+      collaborators: []
     };
   }
   componentDidMount() {
-    fetch("https://api.github.com/repositories")
-      .then(res => res.json())
+    fetchJson("https://api.github.com/orgs/ecvdbdx/repos")
       .then(data => {
         this.setState({ repos: data });
       })
@@ -21,5 +22,4 @@ class App extends Component {
     return <Repos repos={this.state.repos} />;
   }
 }
-
 export default App;
