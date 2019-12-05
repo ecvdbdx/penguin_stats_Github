@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import fetchJson from "./fetchJson.js";
 import Repos from "./components/repos";
+import SearchBar from "./components/searchBar";
+
 
 class App extends Component {
   constructor() {
@@ -19,7 +21,13 @@ class App extends Component {
       .catch(console.log);
   }
   render() {
-    return <Repos repos={this.state.repos} />;
+    return (
+      <div>
+        <SearchBar/>
+        <Repos repos={this.state.repos} />
+      </div>
+
+      ) ;
   }
 }
 export default App;
